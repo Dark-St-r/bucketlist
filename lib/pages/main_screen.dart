@@ -120,16 +120,20 @@ class _MainScreenState extends State<MainScreen> {
             return AddBucketList(
               newIndex: bucketListData.length,
             );
-          }));
+          })).then((value) {
+            if (value == 'updated') {
+              getData();
+            }
+          });
         },
         shape: const CircleBorder(),
         child: const Icon(Icons.add),
       ),
       appBar: AppBar(
         centerTitle: true,
-        title: Text(
-          'Bucket List: ${bucketListData.length} items',
-          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        title: const Text(
+          'Bucket List',
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
         actions: [
           Padding(
